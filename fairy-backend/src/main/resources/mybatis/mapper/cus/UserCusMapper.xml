@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.weix.fairy.mapper.UserMapper">
+
+    <select id="getUserByMobile" resultMap="BaseResultMap">
+        SELECT 
+        <include refid="Base_Column_List"/>
+        FROM user
+        WHERE mobile = #{mobile,jdbcType=VARCHAR} AND status = 1
+    </select>
+
+    <select id="getUserByEmail" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM user
+        WHERE email = #{email,jdbcType=VARCHAR} AND status = 1
+    </select>
+</mapper>

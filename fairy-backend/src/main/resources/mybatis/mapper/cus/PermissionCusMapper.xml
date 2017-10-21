@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.weix.fairy.dao.PermissionMapper" >
+
+    <select id="getPermissionsByRoleId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM permission p
+        LEFT JOIN role_permission rp ON p.id = rp.permission_id
+        WHERE rp.role_id = #{roleId, jdbcType=INTEGER}
+              AND p.status = 1 AND rp.status = 1
+    </select>
+</mapper>
