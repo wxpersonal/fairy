@@ -16,4 +16,6 @@ public interface IUserService extends IBaseService<User> {
 
 	User getUserByMobile(String mobile);
 
+	User getUserByUsername(String username);
+
 }

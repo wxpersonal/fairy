@@ -11,6 +11,11 @@ public class AjaxResult {
     private String message;
     private Object data;
 
+    public AjaxResult(boolean success, String message) {
+        this.success = success;
+        this.message = message;
+    }
+
     public boolean isSuccess() {
         return success;
     }
