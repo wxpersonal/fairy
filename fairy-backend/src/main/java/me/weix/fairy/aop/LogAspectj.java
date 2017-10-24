@@ -1,4 +1,4 @@
-package me.weix.whatever.aop;
+package me.weix.fairy.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -22,7 +22,7 @@ public class LogAspectj {
 
 	// 定义通用切点，以便下面4个通知使用
 
-	@Pointcut("execution(* me.weix.fairy.service.impl.*ServiceImpl.*(..)) ||" + "execution(* me.weix.fairy.service.impl.*ServiceImpl.*(..))")
+	@Pointcut("execution(* me.weix.fairy.service.impl.*ServiceImpl.*(..))")
 	public void logAop() {
 	}
 
