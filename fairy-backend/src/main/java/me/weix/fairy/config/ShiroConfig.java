@@ -1,6 +1,7 @@
+/*
 package me.weix.fairy.config;
 
-import me.weix.fairy.config.shiro.authc.DefaultModularRealm;
+import me.weix.fairy.config.shiro.authc.DefaultModularRealmAuthenticator;
 import me.weix.fairy.config.shiro.realm.EmailRealm;
 import me.weix.fairy.config.shiro.realm.MobileRealm;
 import me.weix.fairy.config.shiro.realm.UsernameRealm;
@@ -16,11 +17,13 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.*;
 
+*/
 /*
  * @Author: WeiX
  * @Date: 2017/10/23
  * @description :
- */
+ *//*
+
 
 @Configuration
 public class ShiroConfig {
@@ -31,9 +34,9 @@ public class ShiroConfig {
         bean.setSecurityManager(manager);
         //配置访问权限
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/", "anon");                      //表示可以匿名访问
-        filterChainDefinitionMap.put("/api/swagger.json", "anon");
-        filterChainDefinitionMap.put("*", "anon");
+//        filterChainDefinitionMap.put("/", "anon");                      //表示可以匿名访问
+//        filterChainDefinitionMap.put("/api/swagger.json", "anon");
+//        filterChainDefinitionMap.put("*", "anon");
 
 //        filterChainDefinitionMap.put("/logout*", "anon");
 //        filterChainDefinitionMap.put("/jsp/error.html*", "anon");
@@ -65,10 +68,10 @@ public class ShiroConfig {
     }
 
     @Bean(name = "defaultModularRealm")
-    public DefaultModularRealm defaultModularRealm(@Qualifier("usernameRealm") UsernameRealm usernameRealm,
-                                                   @Qualifier("emailRealm") EmailRealm emailRealm,
-                                                   @Qualifier("mobileRealm") MobileRealm mobileRealm) {
-        DefaultModularRealm defaultModularRealm = new DefaultModularRealm();
+    public DefaultModularRealmAuthenticator defaultModularRealm(@Qualifier("usernameRealm") UsernameRealm usernameRealm,
+                                                                @Qualifier("emailRealm") EmailRealm emailRealm,
+                                                                @Qualifier("mobileRealm") MobileRealm mobileRealm) {
+        DefaultModularRealmAuthenticator defaultModularRealm = new DefaultModularRealmAuthenticator();
         Map<String, Object> definedRealms = new HashMap<>();
         definedRealms.put("usernameRealm", usernameRealm);
         definedRealms.put("emailRealm", emailRealm);
@@ -90,7 +93,7 @@ public class ShiroConfig {
     }
 
     //配置核心安全事务管理器
-    @Bean
+    @Bean(name = "securityManager")
     public DefaultWebSecurityManager securityManager(@Qualifier("usernameRealm") UsernameRealm usernameRealm,
                                                      @Qualifier("emailRealm") EmailRealm emailRealm,
                                                      @Qualifier("mobileRealm") MobileRealm mobileRealm) {
@@ -101,6 +104,7 @@ public class ShiroConfig {
         realms.add(emailRealm);
         realms.add(mobileRealm);
         securityManager.setRealms(realms);
+        securityManager.setAuthenticator(defaultModularRealm(usernameRealm,emailRealm,mobileRealm));
         return securityManager;
     }
 
@@ -112,3 +116,4 @@ public class ShiroConfig {
         return advisor;
     }
 }
+*/

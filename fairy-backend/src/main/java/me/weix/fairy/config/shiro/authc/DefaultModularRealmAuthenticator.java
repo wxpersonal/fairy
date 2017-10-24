@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2017/6/20.
  */
-public class DefaultModularRealm extends ModularRealmAuthenticator {
+public class DefaultModularRealmAuthenticator extends ModularRealmAuthenticator {
 
     private Map<String, Object> definedRealms;
 
