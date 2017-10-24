@@ -47,18 +47,4 @@ public class LogAspectj {
 	public void logAfterThrow() {
 		log.info("异常通知AfterThrowing-->{}");
 	}
-
-	@Around("logAop()")
-	public void logAround(ProceedingJoinPoint jp) {
-		try {
-			log.debug("自定义前置通知Before-->{}");
-			jp.proceed();
-			log.debug("自定义返回通知AfterReturning-->{}");
-		} catch (Throwable throwable) {
-			log.debug("异常处理-->{}");
-			throwable.printStackTrace();
-		}
-		log.debug("自定义后置通知After-->{}");
-	}
-
 }

@@ -1,5 +1,5 @@
-package me.weix.fairy.shiro.session;/*
-package me.weix.fairy.shiro.session;
+package me.weix.fairy.config.shiro.session;/*
+package me.weix.whatever.config.shiro.session;
 
 
 import com.wx.util.RedisUtil;
@@ -22,7 +22,7 @@ public class CustomSessionDao extends EnterpriseCacheSessionDAO {
 
     private static Logger log = LoggerFactory.getLogger(CustomSessionDao.class);
     // 会话key
-    private final static String WHATEVER_SESSION_ID = "fairy-session-id";
+    private final static String WHATEVER_SESSION_ID = "whatever-session-id";
 
     */
 /**

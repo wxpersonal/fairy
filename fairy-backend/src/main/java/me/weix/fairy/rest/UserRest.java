@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
  * @Date: 2017/4/25
  * @Description:
  */
-@Api(value="user")
+@Api(value = "user")
 @Path("user")
 public class UserRest {
 
@@ -30,7 +30,7 @@ public class UserRest {
     public User getUserById(@PathParam("id") Integer id) {
 //        DataSourceContextHolder.setDataSource(DataSourceType.master.getName());
         User byId = userService.getById(id);
-         return byId;
+        return byId;
     }
 
     @ApiOperation(value = "添加user")

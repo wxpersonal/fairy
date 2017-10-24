@@ -3,7 +3,7 @@
 <mapper namespace="me.weix.fairy.mapper.UserMapper">
 
     <select id="getUserByMobile" resultMap="BaseResultMap">
-        SELECT 
+        SELECT
         <include refid="Base_Column_List"/>
         FROM user
         WHERE mobile = #{mobile,jdbcType=VARCHAR} AND status = 1
@@ -14,5 +14,12 @@
         <include refid="Base_Column_List"/>
         FROM user
         WHERE email = #{email,jdbcType=VARCHAR} AND status = 1
+    </select>
+
+    <select id="getUserByUsername" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM user
+        WHERE username = #{username,jdbcType=VARCHAR} AND status = 1
     </select>
 </mapper>

@@ -1,4 +1,4 @@
-package me.weix.fairy.shiro.session;
+package me.weix.fairy.config.shiro.session;
 
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.SessionContext;
@@ -8,9 +8,8 @@ import org.apache.shiro.web.session.mgt.WebSessionContext;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
- * @Author: WeiX
  * session工厂
+ * Created by shuzheng on 2017/2/27.
  */
 public class UpmsSessionFactory implements SessionFactory {
 

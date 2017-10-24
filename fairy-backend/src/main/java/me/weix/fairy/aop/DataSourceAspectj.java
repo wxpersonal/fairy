@@ -48,10 +48,34 @@ public class DataSourceAspectj {
 	 * log.info("异常通知AfterThrowing-->{}"); }
 	 */
 
+	/**
+	 * 主库切点
+	 * @param jp
+	 * @return
+	 */
+	@Around("writePointcut()")
+	public Object setWriteDataSource(ProceedingJoinPoint jp) {
+		try {
+			String dataSourceKey = DataSourceType.master.getName();
+			DataSourceContextHolder.setDataSource(dataSourceKey);
+			Object obj = jp.proceed();
+			DataSourceContextHolder.clearDataSource();
+			return  obj;
+		} catch (Throwable throwable) {
+			throwable.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 从库切点
+	 * @param jp
+	 * @return
+	 */
 	@Around("readPointcut()")
 	public Object setReadDataSource(ProceedingJoinPoint jp) {
 		try {
-			String dataSourceKey = DataSourceType.master.getName();
+			String dataSourceKey = DataSourceType.slave1.getName();
 			DataSourceContextHolder.setDataSource(dataSourceKey);
 			log.debug("切换数据源------------>" + dataSourceKey);
 			Object obj = jp.proceed();
@@ -61,24 +85,9 @@ public class DataSourceAspectj {
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
 		}
-		log.debug("自定义后置通知After-->{}");
 		return null;
 
 	}
 
-	@Around("writePointcut()")
-	public void setWriteDataSource(ProceedingJoinPoint jp) {
-		try {
-			String dataSourceKey = DataSourceType.slave1.getName();
-			DataSourceContextHolder.setDataSource(dataSourceKey);
-			log.debug("切换数据源------------>" + dataSourceKey);
-			jp.proceed();
-			// log.debug("自定义返回通知AfterReturning-->{}");
-		} catch (Throwable throwable) {
-			// log.debug("异常处理-->{}");
-			throwable.printStackTrace();
-		}
-		// log.debug("自定义后置通知After-->{}");
-	}
 
 }

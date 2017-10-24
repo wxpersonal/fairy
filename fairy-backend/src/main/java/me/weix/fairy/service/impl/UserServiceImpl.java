@@ -21,39 +21,44 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
 
-	@Resource
-	private RoleMapper roleMapper;
+    @Resource
+    private RoleMapper roleMapper;
 
-	@Resource
-	private PermissionMapper permissionMapper;
+    @Resource
+    private PermissionMapper permissionMapper;
 
-	@Resource
-	private UserMapper userMapper;
+    @Resource
+    private UserMapper userMapper;
 
-	@Override
-	public List<Role> getRolesByUserId(Integer userId) {
-		return roleMapper.getRolesByUserId(userId);
-	}
+    @Override
+    public List<Role> getRolesByUserId(Integer userId) {
+        return roleMapper.getRolesByUserId(userId);
+    }
 
-	@Override
-	public List<Permission> getPermissionsByUserId(Integer userId) {
+    @Override
+    public List<Permission> getPermissionsByUserId(Integer userId) {
 
-		List<Permission> permissionList = new ArrayList<Permission>();
-		List<Role> roleList = getRolesByUserId(userId);
-		for (Role role : roleList) {
-			List<Permission> permissions = permissionMapper.getPermissionsByRoleId(role.getId());
-			permissionList.addAll(permissions);
-		}
-		return permissionList;
-	}
+        List<Permission> permissionList = new ArrayList<Permission>();
+        List<Role> roleList = getRolesByUserId(userId);
+        for (Role role : roleList) {
+            List<Permission> permissions = permissionMapper.getPermissionsByRoleId(role.getId());
+            permissionList.addAll(permissions);
+        }
+        return permissionList;
+    }
 
-	@Override
-	public User getUserByEmail(String email) {
-		return userMapper.getUserByEmail(email);
-	}
+    @Override
+    public User getUserByEmail(String email) {
+        return userMapper.getUserByEmail(email);
+    }
 
-	@Override
-	public User getUserByMobile(String mobile) {
-		return userMapper.getUserByMobile(mobile);
-	}
+    @Override
+    public User getUserByMobile(String mobile) {
+        return userMapper.getUserByMobile(mobile);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userMapper.getUserByUsername(username);
+    }
 }

@@ -22,4 +22,6 @@ public interface UserMapper {
     User getUserByMobile(@Param("mobile") String mobile);
 
     User getUserByEmail(@Param("email") String email);
+
+    User getUserByUsername(@Param("username") String username);
 }
