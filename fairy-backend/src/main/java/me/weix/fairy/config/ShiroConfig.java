@@ -4,6 +4,7 @@ import me.weix.fairy.config.shiro.authc.DefaultModularRealm;
 import me.weix.fairy.config.shiro.realm.EmailRealm;
 import me.weix.fairy.config.shiro.realm.MobileRealm;
 import me.weix.fairy.config.shiro.realm.UsernameRealm;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -106,11 +107,26 @@ public class ShiroConfig {
         return securityManager;
     }
 
+    /**
+     * shiro缓存管理器;
+     * 需要注入对应的其它的实体类中：
+     * 1、安全管理器：securityManager
+     * 可见securityManager是整个shiro的核心；
+     * @return
+     */
+    @Bean
+    public EhCacheManager ehCacheManager(){
+        //System.out.println("ShiroConfiguration.getEhCacheManager()");
+        EhCacheManager cacheManager = new EhCacheManager();
+        cacheManager.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");
+        return cacheManager;
+    }
 
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(@Qualifier("securityManager") DefaultWebSecurityManager manager) {
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
         advisor.setSecurityManager(manager);
+        manager.setCacheManager(ehCacheManager());
         return advisor;
     }
 }
