@@ -1,0 +1,70 @@
+spring:
+  profiles: default
+  aop:
+    proxy-target-class: true
+
+server:
+  port: 8888
+
+jdbc:
+  readSize: 2
+  type: com.alibaba.druid.pool.DruidDataSource
+  master:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/fairy?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+    databaseId: mysql
+    username: root
+    password: xiang123
+  slave1:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/fairy?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+    databaseId: mysql
+    username: root
+    password: xiang123
+  slave2:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/fairy?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+    databaseId: mysql
+    username: root
+    password: xiang123
+
+# MyBatis
+mybatis:
+  typeAliasesPackage: me.weix.fairy.pojo
+  mapperLocations: classpath:/mybatis/mapper/**/*.xml
+# configLocation: classpath:/mybatis-config.xml
+
+redis:
+  host: 127.0.0.1
+  password:
+  port: 6379
+  pool:
+    max-idle: 8
+    min-idle: 0
+    max-active: 8
+    max-wait: -1
+
+
+#swagger
+swagger:
+  version: 0.0.1
+  host:
+  basePath: /fairy/rest
+  description: Logic Solutions System Server.
+  title: System Server
+  licence:
+  licenceUrl:
+  contact:
+  termsOfServiceUrl:
+  resourcePackage: me.weix.fairyst
+
+file:
+  #/usr/share/nginx/html/uploads
+  #D://uploads
+  path:
+    dipositPath: dipositPdf
+    contract_path: contract_pdf
+    local: /usr/share/nginx/html/uploads
+    #如果是本地必须配置本地ip不能使用localhost，他人访问会导致图片查询地址不对从而显示不出。
+    remote: http://192.168.42.77:8080/image
+
