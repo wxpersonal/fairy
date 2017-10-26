@@ -33,7 +33,7 @@
 
 	<logger name="java.sql" additivity="false" level="DEBUG"/>
 
-	<logger name="org.springframework" level="DEBUG" additivity="false"/>
+	<logger name="org.springframework" level="DEBUG" additivity="true"/>
 
 	<logger name="springfox.documentation" level="DEBUG" additivity="false"/>
 

@@ -1,5 +1,7 @@
 spring:
   profiles: default
+  aop:
+    proxy-target-class: true
 
 server:
   port: 8888
@@ -54,7 +56,7 @@ swagger:
   licenceUrl:
   contact:
   termsOfServiceUrl:
-  resourcePackage: me.weix.fairyst
+  resourcePackage: me.weix.fairy
 
 file:
   #/usr/share/nginx/html/uploads

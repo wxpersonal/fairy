@@ -1,10 +1,11 @@
-/*
+
 package me.weix.fairy.config;
 
 import me.weix.fairy.config.shiro.authc.DefaultModularRealmAuthenticator;
 import me.weix.fairy.config.shiro.realm.EmailRealm;
 import me.weix.fairy.config.shiro.realm.MobileRealm;
 import me.weix.fairy.config.shiro.realm.UsernameRealm;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -17,33 +18,23 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.*;
 
-*/
+
 /*
  * @Author: WeiX
  * @Date: 2017/10/23
  * @description :
- *//*
+ */
 
 
 @Configuration
 public class ShiroConfig {
 
     @Bean(name = "shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") DefaultWebSecurityManager manager) {
+    public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") SecurityManager manager) {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(manager);
         //配置访问权限
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-//        filterChainDefinitionMap.put("/", "anon");                      //表示可以匿名访问
-//        filterChainDefinitionMap.put("/api/swagger.json", "anon");
-//        filterChainDefinitionMap.put("*", "anon");
-
-//        filterChainDefinitionMap.put("/logout*", "anon");
-//        filterChainDefinitionMap.put("/jsp/error.html*", "anon");
-//        filterChainDefinitionMap.put("/jsp/index.html*", "authc");
-//        filterChainDefinitionMap.put(" ", "authc");//表示需要认证才可以访问
-//        filterChainDefinitionMap.put("*", "authc");//表示需要认证才可以访问
-//        filterChainDefinitionMap.put(".*", "authc");
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;
     }
@@ -94,7 +85,7 @@ public class ShiroConfig {
 
     //配置核心安全事务管理器
     @Bean(name = "securityManager")
-    public DefaultWebSecurityManager securityManager(@Qualifier("usernameRealm") UsernameRealm usernameRealm,
+    public SecurityManager securityManager(@Qualifier("usernameRealm") UsernameRealm usernameRealm,
                                                      @Qualifier("emailRealm") EmailRealm emailRealm,
                                                      @Qualifier("mobileRealm") MobileRealm mobileRealm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
@@ -116,4 +107,4 @@ public class ShiroConfig {
         return advisor;
     }
 }
-*/
+
