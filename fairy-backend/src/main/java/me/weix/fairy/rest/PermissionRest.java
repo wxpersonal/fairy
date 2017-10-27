@@ -2,7 +2,6 @@ package me.weix.fairy.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import me.weix.fairy.pojo.Permission;
 import me.weix.fairy.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

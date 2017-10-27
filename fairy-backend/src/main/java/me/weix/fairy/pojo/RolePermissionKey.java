@@ -1,6 +1,5 @@
 package me.weix.fairy.pojo;
 
-
 public class RolePermissionKey extends BasePojo {
     private Integer roleId;
 

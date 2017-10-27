@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="me.weix.fairy.mapper.PermissionMapper" >
-  <resultMap id="BaseResultMap" type="me.weix.fairy.pojo.Permission" >
+<mapper namespace="me.weix.fairy.mapper.MenuMapper" >
+  <resultMap id="BaseResultMap" type="me.weix.fairy.pojo.Menu" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="p_id" property="pId" jdbcType="INTEGER" />
-    <result column="system_id" property="systemId" jdbcType="INTEGER" />
-    <result column="code" property="code" jdbcType="VARCHAR" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="kind" property="kind" jdbcType="INTEGER" />
     <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="orders" property="orders" jdbcType="INTEGER" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_by" property="updateBy" jdbcType="INTEGER" />
@@ -16,52 +15,48 @@
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, p_id, system_id, code, desc, url, orders, create_by, create_time, update_by, 
-    update_time, status
+    id, pid, name, kind, url, icon, create_by, create_time, update_by, update_time, status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from t_permission
+    from t_menu
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_permission
+    delete from t_menu
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="me.weix.fairy.pojo.Permission" >
-    insert into t_permission (id, p_id, system_id, 
-      code, desc, url, orders, 
-      create_by, create_time, update_by, 
-      update_time, status)
-    values (#{id,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER}, #{systemId,jdbcType=INTEGER}, 
-      #{code,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{orders,jdbcType=INTEGER}, 
-      #{createBy,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=INTEGER}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  <insert id="insert" parameterType="me.weix.fairy.pojo.Menu" >
+    insert into t_menu (id, pid, name, 
+      kind, url, icon, create_by, 
+      create_time, update_by, update_time, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{kind,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{createBy,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="me.weix.fairy.pojo.Permission" >
-    insert into t_permission
+  <insert id="insertSelective" parameterType="me.weix.fairy.pojo.Menu" >
+    insert into t_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="pId != null" >
-        p_id,
+      <if test="pid != null" >
+        pid,
       </if>
-      <if test="systemId != null" >
-        system_id,
+      <if test="name != null" >
+        name,
       </if>
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="desc != null" >
-        desc,
+      <if test="kind != null" >
+        kind,
       </if>
       <if test="url != null" >
         url,
       </if>
-      <if test="orders != null" >
-        orders,
+      <if test="icon != null" >
+        icon,
       </if>
       <if test="createBy != null" >
         create_by,
@@ -83,23 +78,20 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="pId != null" >
-        #{pId,jdbcType=INTEGER},
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
       </if>
-      <if test="systemId != null" >
-        #{systemId,jdbcType=INTEGER},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+      <if test="kind != null" >
+        #{kind,jdbcType=INTEGER},
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
       </if>
-      <if test="orders != null" >
-        #{orders,jdbcType=INTEGER},
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
       </if>
       <if test="createBy != null" >
         #{createBy,jdbcType=INTEGER},
@@ -118,26 +110,23 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="me.weix.fairy.pojo.Permission" >
-    update t_permission
+  <update id="updateByPrimaryKeySelective" parameterType="me.weix.fairy.pojo.Menu" >
+    update t_menu
     <set >
-      <if test="pId != null" >
-        p_id = #{pId,jdbcType=INTEGER},
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
       </if>
-      <if test="systemId != null" >
-        system_id = #{systemId,jdbcType=INTEGER},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="code != null" >
-        code = #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+      <if test="kind != null" >
+        kind = #{kind,jdbcType=INTEGER},
       </if>
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
       </if>
-      <if test="orders != null" >
-        orders = #{orders,jdbcType=INTEGER},
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
       </if>
       <if test="createBy != null" >
         create_by = #{createBy,jdbcType=INTEGER},
@@ -157,14 +146,13 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="me.weix.fairy.pojo.Permission" >
-    update t_permission
-    set p_id = #{pId,jdbcType=INTEGER},
-      system_id = #{systemId,jdbcType=INTEGER},
-      code = #{code,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="me.weix.fairy.pojo.Menu" >
+    update t_menu
+    set pid = #{pid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      kind = #{kind,jdbcType=INTEGER},
       url = #{url,jdbcType=VARCHAR},
-      orders = #{orders,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=INTEGER},

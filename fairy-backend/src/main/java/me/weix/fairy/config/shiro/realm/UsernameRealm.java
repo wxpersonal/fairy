@@ -1,8 +1,5 @@
 package me.weix.fairy.config.shiro.realm;
 
-import me.weix.fairy.pojo.Permission;
-import me.weix.fairy.pojo.Role;
-import me.weix.fairy.pojo.User;
 import me.weix.fairy.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

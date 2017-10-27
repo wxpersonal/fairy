@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="me.weix.fairy.dao.UserRoleMapper" >
+<mapper namespace="me.weix.fairy.mapper.UserRoleMapper" >
   <resultMap id="BaseResultMap" type="me.weix.fairy.pojo.UserRole" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <id column="role_id" property="roleId" jdbcType="INTEGER" />
@@ -16,17 +16,17 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="me.weix.fairy.pojo.UserRoleKey" >
     select 
     <include refid="Base_Column_List" />
-    from user_role
+    from t_user_role
     where user_id = #{userId,jdbcType=INTEGER}
       and role_id = #{roleId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="me.weix.fairy.pojo.UserRoleKey" >
-    delete from user_role
+    delete from t_user_role
     where user_id = #{userId,jdbcType=INTEGER}
       and role_id = #{roleId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="me.weix.fairy.pojo.UserRole" >
-    insert into user_role (user_id, role_id, create_by, 
+    insert into t_user_role (user_id, role_id, create_by, 
       create_time, update_by, update_time, 
       status)
     values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{createBy,jdbcType=INTEGER}, 
@@ -34,7 +34,7 @@
       #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="me.weix.fairy.pojo.UserRole" >
-    insert into user_role
+    insert into t_user_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
         user_id,
@@ -83,7 +83,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="me.weix.fairy.pojo.UserRole" >
-    update user_role
+    update t_user_role
     <set >
       <if test="createBy != null" >
         create_by = #{createBy,jdbcType=INTEGER},
@@ -105,7 +105,7 @@
       and role_id = #{roleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="me.weix.fairy.pojo.UserRole" >
-    update user_role
+    update t_user_role
     set create_by = #{createBy,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=INTEGER},

@@ -1,7 +1,7 @@
 package me.weix.fairy.aop;
 
-import me.weix.fairy.pojo.BasePojo;
 import me.weix.fairy.common.util.ReflectUtil;
+import me.weix.fairy.pojo.BasePojo;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

@@ -1,6 +1,5 @@
 package me.weix.fairy.mapper;
 
-
 import me.weix.fairy.pojo.UserRole;
 import me.weix.fairy.pojo.UserRoleKey;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="me.weix.fairy.dao.RoleMapper" >
+<mapper namespace="me.weix.fairy.mapper.RoleMapper" >
   <resultMap id="BaseResultMap" type="me.weix.fairy.pojo.Role" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="code" property="code" jdbcType="VARCHAR" />
@@ -18,15 +18,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from role
+    from t_role
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from role
+    delete from t_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="me.weix.fairy.pojo.Role" >
-    insert into role (id, code, name, 
+    insert into t_role (id, code, name, 
       desc, create_by, create_time, 
       update_by, update_time, status
       )
@@ -36,7 +36,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="me.weix.fairy.pojo.Role" >
-    insert into role
+    insert into t_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -97,7 +97,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="me.weix.fairy.pojo.Role" >
-    update role
+    update t_role
     <set >
       <if test="code != null" >
         code = #{code,jdbcType=VARCHAR},
@@ -127,7 +127,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="me.weix.fairy.pojo.Role" >
-    update role
+    update t_role
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       desc = #{desc,jdbcType=VARCHAR},

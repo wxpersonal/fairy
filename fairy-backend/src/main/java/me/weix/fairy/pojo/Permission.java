@@ -1,6 +1,5 @@
 package me.weix.fairy.pojo;
 
-
 public class Permission extends BasePojo {
     private Integer id;
 

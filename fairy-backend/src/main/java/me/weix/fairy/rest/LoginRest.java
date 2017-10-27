@@ -2,7 +2,6 @@ package me.weix.fairy.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import me.weix.fairy.pojo.User;
 import me.weix.fairy.pojo.vo.AjaxResult;
 import me.weix.fairy.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
