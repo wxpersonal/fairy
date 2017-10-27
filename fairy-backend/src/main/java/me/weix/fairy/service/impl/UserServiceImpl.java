@@ -18,7 +18,7 @@ import java.util.List;
  * @Date: 2017/4/25
  * @Description:
  */
-@Service
+@Service("userService")
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
 
     @Resource
