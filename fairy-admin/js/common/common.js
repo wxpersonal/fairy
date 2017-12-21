@@ -89,11 +89,11 @@
      */
     commonAjaxError: function (XMLHttpRequest, textStatus, errorThrown) {
         if ("timeout" == textStatus)
-            errorMessage("服务器正忙，响应超时，请联系系统管理员或重试！");
+            alert("服务器正忙，响应超时，请联系系统管理员或重试！");
         else if ("error" == textStatus)
-            errorMessage("连接服务器出错，请检查网络或者服务器可能已经停止服务，请联系系统管理员或重试！");
+            alert("连接服务器出错，请检查网络或者服务器可能已经停止服务，请联系系统管理员或重试！");
         else
-            errorMessage("未知原因(" + textStatus + ")，请联系系统管理员或重试！");
+            alert("未知原因(" + textStatus + ")，请联系系统管理员或重试！");
     },
 
     /**
@@ -115,7 +115,7 @@
         var flag = true;
         var re = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
         if (!re.test(phone)) {
-            errorMessage("请输入正确的手机号！");
+            alert("请输入正确的手机号！");
             flag = false;
         }
         return flag;
@@ -130,7 +130,7 @@
         var flag = true;
         var re = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
         if (!re.test(data)) {
-            errorMessage("请输入正确的身份证号！");
+            alert("请输入正确的身份证号！");
             flag = false;
         }
         return flag;
