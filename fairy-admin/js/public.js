@@ -1,7 +1,7 @@
 var basePath;
 $(function () {
     // basePath = public.getBasePath();
-    basePath = "localhost:8888"
+    basePath = "http://localhost:8888"
 })
 
 var public = {

@@ -31,10 +31,9 @@ public class LoginRest {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path(value = "login")
     public AjaxResult login(@QueryParam("username") String username,
                             @QueryParam("password") String password,
-                            @QueryParam("rememberMe") String rememberMe) {
+                            @QueryParam("rememberMe") Boolean rememberMe) {
 
         if (StringUtils.isBlank(username)) {
             return new AjaxResult(false, "账户名不能为空！");

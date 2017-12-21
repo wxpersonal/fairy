@@ -1,6 +1,7 @@
 package me.weix.fairy.service;
 
 import me.weix.fairy.pojo.Menu;
+import me.weix.fairy.pojo.vo.AjaxResult;
 
 import java.util.List;
 
@@ -11,6 +12,5 @@ import java.util.List;
  */
 public interface ILoginService {
 
-    List<Menu> getMenu();
-
+    AjaxResult login(String username,String password, boolean rememberMe);
 }
